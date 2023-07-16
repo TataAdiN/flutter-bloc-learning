@@ -1,5 +1,6 @@
 import 'package:bloc_learning/modules/detail/detail_page.dart';
 import 'package:bloc_learning/modules/home/home_page.dart';
+import 'package:bloc_learning/modules/post/post_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +17,7 @@ class Routers {
             path: 'detail',
             pageBuilder: (BuildContext context, GoRouterState state) {
               return CustomTransitionPage(
-                  child: const DetailPage(),
+                  child: const PostPage(),
                   transitionsBuilder: (BuildContext context,
                       Animation<double> animation,
                       Animation<double> secondaryAnimation,
