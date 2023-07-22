@@ -35,7 +35,7 @@ class HomeView extends StatelessWidget {
           FloatingActionButton(
               heroTag: 3,
             child: const Icon(Icons.arrow_right),
-            onPressed: () => context.go('/detail'),
+            onPressed: () => context.goNamed('auth'),
           ),
         ],
       ),
