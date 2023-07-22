@@ -10,16 +10,19 @@ import '../state/post_state.dart';
 import '../state/posts_loaded_state.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
-
   PostBloc() : super(PostLoadingState()) {
-    on<FetchPostEvent>((event, emit) async {
-      try{
-        List<Post> posts = await event.fetch();
-        emit(PostLoadedState(posts: posts));
-      }on InternalServerException catch (exception){
-        emit(PostErrorState(exception.message));
-      }
-    });
+    on<FetchPostEvent>(_fetchPost);
   }
 
+  _fetchPost(
+    FetchPostEvent event,
+    Emitter<PostState> emit,
+  ) async {
+    try {
+      List<Post> posts = await event.fetch();
+      emit(PostLoadedState(posts: posts));
+    } on InternalServerException catch (exception) {
+      emit(PostErrorState(exception.message));
+    }
+  }
 }
