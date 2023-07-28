@@ -1,7 +1,6 @@
-import 'package:bloc_learning/routers/routers.dart';
 import 'package:flutter/material.dart';
 
-import 'modules/home/home_page.dart';
+import 'routers/routers.dart';
 
 void main() {
   runApp(const MyApp());
