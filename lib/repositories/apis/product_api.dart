@@ -5,24 +5,24 @@ import 'package:http/http.dart' as http;
 import '../models/product.dart';
 import 'exceptions/internal_server_exception.dart';
 
-class PostApi{
+class ProductApi{
 
   Future<List<Product>> fetch() async {
-    final fetchPostsRequest = Uri.parse('https://jsonplaceholder.typicode.com/posts');
+    final fetchProductsRequest = Uri.parse('https://dummyjson.com/products');
 
-    final fetchPostsResponse = await http.get(fetchPostsRequest);
+    final fetchProductsResponse = await http.get(fetchProductsRequest);
 
-    if (fetchPostsResponse.statusCode == 500) {
+    if (fetchProductsResponse.statusCode == 500) {
       throw InternalServerException();
     }
 
-    final postsJson = jsonDecode(fetchPostsResponse.body);
+    final productsJson = jsonDecode(fetchProductsResponse.body)['products'];
 
-    List<Product> posts = [];
-    for (var item in postsJson) {
+    List<Product> products = [];
+    for (var item in productsJson) {
       Product post = Product.fromJson(item);
-      posts.add(post);
+      products.add(post);
     }
-    return posts;
+    return products;
   }
 }
