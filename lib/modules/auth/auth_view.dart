@@ -1,6 +1,3 @@
-import 'package:bloc_learning/modules/auth/event/auth_login_event.dart';
-import 'package:bloc_learning/modules/auth/state/auth_fail.dart';
-import 'package:bloc_learning/modules/auth/state/auth_success.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -9,9 +6,12 @@ import '../../components/form/my_obsecurefield.dart';
 import '../../components/form/my_textfield.dart';
 import '../../components/my_button.dart';
 import 'bloc/auth_bloc.dart';
+import 'event/auth_login_event.dart';
+import 'state/auth_fail.dart';
 import 'state/auth_initial.dart';
 import 'state/auth_loading.dart';
 import 'state/auth_state.dart';
+import 'state/auth_success.dart';
 
 class AuthView extends StatelessWidget {
   AuthView({super.key});

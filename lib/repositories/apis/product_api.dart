@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../models/post.dart';
+import '../models/product.dart';
 import 'exceptions/internal_server_exception.dart';
 
 class PostApi{
 
-  Future<List<Post>> fetch() async {
+  Future<List<Product>> fetch() async {
     final fetchPostsRequest = Uri.parse('https://jsonplaceholder.typicode.com/posts');
 
     final fetchPostsResponse = await http.get(fetchPostsRequest);
@@ -18,9 +18,9 @@ class PostApi{
 
     final postsJson = jsonDecode(fetchPostsResponse.body);
 
-    List<Post> posts = [];
+    List<Product> posts = [];
     for (var item in postsJson) {
-      Post post = Post.fromJson(item);
+      Product post = Product.fromJson(item);
       posts.add(post);
     }
     return posts;
