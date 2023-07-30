@@ -1,8 +1,9 @@
-import 'package:bloc_learning/modules/auth/auth_page.dart';
-import 'package:bloc_learning/modules/home/home_page.dart';
-import 'package:bloc_learning/modules/post/post_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../modules/auth/auth_page.dart';
+import '../modules/home/home_page.dart';
+import '../modules/product/product_page.dart';
 
 class Routers {
   static GoRouter get() {
@@ -37,7 +38,7 @@ class Routers {
             path: 'post',
             pageBuilder: (BuildContext context, GoRouterState state) {
               return CustomTransitionPage(
-                  child: const PostPage(),
+                  child: const ProductPage(),
                   transitionsBuilder: (BuildContext context,
                       Animation<double> animation,
                       Animation<double> secondaryAnimation,
