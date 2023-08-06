@@ -28,37 +28,62 @@ class ProductView extends StatelessWidget {
     );
   }
 
-  Widget listProducts(BuildContext context, List<Product> product) => ListView.builder(
-      itemCount: product.length,
-      itemBuilder: (context, index) {
-        return Container(
-          margin: const EdgeInsets.all(8.0),
-          child: Card(
-            child: Container(
+  Widget listProducts(BuildContext context, List<Product> product) =>
+      ListView.builder(
+          itemCount: product.length,
+          itemBuilder: (context, index) {
+            return Container(
               margin: const EdgeInsets.all(8.0),
-              child: Column(
-                children: <Widget>[
-                  const Text("Country: "),
-                  Text("Total Confirmed: ${product[index].id}"),
-                  Text("Total Deaths: ${product[index].title}"),
-                  const Text("Total Recovered:"),
-                ],
+              child: Card(
+                child: Container(
+                  margin: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Image.network(product[index].thumbnail),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(product[index].title,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                              Text(product[index].brand,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text("\$${product[index].price}",
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Text(product[index].description)
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ),
-        );
-      });
+            );
+          });
 
-  Widget emptyProducts() => const Center(child : Text('Empty Products'));
+  Widget emptyProducts() => const Center(child: Text('Empty Products'));
 
   Widget loadingIndicator(String message) => Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const CircularProgressIndicator(),
-        const SizedBox(height: 10),
-        Text(message)
-      ],
-    ),
-  );
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const CircularProgressIndicator(),
+            const SizedBox(height: 10),
+            Text(message)
+          ],
+        ),
+      );
 }
